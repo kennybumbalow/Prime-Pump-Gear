@@ -1,0 +1,8 @@
+{
+  "name": "Remix Prime Pump \u0026 Gear Services",
+  "description": "Industrial rotating equipment repair, rebuilding, CNC machining, manufacturing, dynamic balancing, and thermal spraying in Missouri City, Texas. Overhead crane up to 30 tons.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

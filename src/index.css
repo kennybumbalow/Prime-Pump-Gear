@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Barlow', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom industrial aesthetic utilities */
+.industrial-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.industrial-grid-dark {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.hazard-stripe {
+  background: repeating-linear-gradient(
+    45deg,
+    #dc2626,
+    #dc2626 12px,
+    #1e293b 12px,
+    #1e293b 24px
+  );
+}
+
+.hazard-stripe-subtle {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(220, 38, 38, 0.2),
+    rgba(220, 38, 38, 0.2) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
