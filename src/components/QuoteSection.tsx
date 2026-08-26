@@ -112,19 +112,44 @@ export const QuoteSection: React.FC<QuoteSectionProps> = ({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    // Simulate rapid Houston repair dispatch intake
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      const randomId = 'PPG-' + Math.floor(100000 + Math.random() * 900000);
-      setConfirmationNumber(randomId);
-    }, 900);
-  };
+  const response = await fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    },
+    body: JSON.stringify({
+      access_key:'c1b52441-f7af-4f2f-9a26-7327c1bbc2de',
+      subject: 'New Prime Pump & Gear Quote Request',
+      from_name: 'Prime Pump & Gear Website',
+      name: formData.name,
+      company: formData.company,
+      phone: formData.phone,
+      email: formData.email,
+      equipment: formData.equipmentType,
+      model_part_number: formData.modelPartNumber,
+      description_of_repair: formData.descriptionOfRepair,
+      urgency: formData.urgency,
+      location: formData.location
+    })
+  });
 
+  const data = await response.json();
+
+  if (data.success) {
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    const randomId = 'PPG-' + Math.floor(100000 + Math.random() * 900000);
+    setConfirmationNumber(randomId);
+  } else {
+    setIsSubmitting(false);
+    alert('Unable to send quote request. Please try again.');
+  }
+};
   const resetForm = () => {
     setIsSubmitted(false);
     setFormData({
